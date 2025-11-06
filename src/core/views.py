@@ -5,7 +5,7 @@ from django.http import JsonResponse
 API_KEY = "RGAPI-80652536-f4e6-4f53-9d3b-7ba0761d49bc"
 
 def home(request):
-    return render(request, "core/index.html")
+    return render(request, "core/home/index.html")
 
 def api_hello(request):
     return JsonResponse({"msg": "hello world"})
