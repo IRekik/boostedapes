@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
       try {
         // Replace with your actual API endpoint
-        const response = await fetch('/api/hello/');
+        const response = await fetch('/api/get_champion_rotation/');
         const data = await response.json();
-        console.log(data);
-        
+
         // Display success
         output.textContent = JSON.stringify(data, null, 2);
         output.classList.remove('text-warning', 'text-danger');
