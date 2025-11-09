@@ -1,0 +1,136 @@
+.hero-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 15px;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.test-section {
+  background: rgba(30, 30, 60, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffc107;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-riot {
+  background: linear-gradient(135deg, #d13639 0%, #e84545 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(209, 54, 57, 0.3);
+}
+
+.btn-riot:hover {
+  background: linear-gradient(135deg, #b82e30 0%, #d13639 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(209, 54, 57, 0.4);
+  color: white;
+}
+
+.output-box {
+  background: #1a1a2e;
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.output-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.output-box::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.output-box::-webkit-scrollbar-thumb {
+  background: rgba(255, 193, 7, 0.4);
+  border-radius: 4px;
+}
+
+.output-box::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 193, 7, 0.6);
+}
+
+.section-title {
+  color: #ffc107;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+}
+
+.badge-dev {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.loading-spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffc107;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.input-group-custom {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-group-custom input {
+  flex: 1;
+}
