@@ -15,16 +15,16 @@
 <div class="container mx-auto">
   <!-- Hero Section -->
   <div class="hero-section text-center">
-    <span class="badge-dev mb-3">Dev Mode</span>
-    <h1 class="display-4 fw-bold text-warning mb-3">Django + Vanilla JS Demo</h1>
-    <p class="lead text-light">Test API integration and see responses live. Enter a summoner name and tag to fetch match data.</p>
+    <span class="badge-dev mb-3">Under Development</span>
+    <h1 class="display-4 fw-bold text-warning mb-3">boostedapes.lol</h1>
+    <p class="lead text-light">The place to see all kind of ape gameplay on the Summoner's Rift.</p>
   </div>
 
-  <!-- Manual Fetch Test -->
+  <!-- Longest Game -->
   <div class="feature-card">
     <div class="test-section">
       <h3 class="section-title">
-        <i class="bi bi-code-slash"></i> Manual Fetch Test
+        <i class="bi bi-code-slash"></i> The Longest Game of the Week...
       </h3>
       <p class="text-light mb-3">Test the API connection with a simple fetch request</p>
       <div class="d-flex align-items-center">
@@ -43,10 +43,9 @@
   <div class="feature-card">
     <div class="test-section">
       <h3 class="section-title">
-        <i class="bi bi-person-circle"></i> Fetch Games by Player
+        <i class="bi bi-person-circle"></i> Fetch Game by Player
       </h3>
-      <p class="text-light mb-4">Enter a summoner name and tag to retrieve their recent match history</p>
-      
+      <p class="text-light mb-4">Enter a summoner name and tag to retrieve their worst game. </br>Look at this feeder.</p>
       <div class="row g-3 mb-3">
         <div class="col-md-5">
           <label for="username" class="form-label text-warning fw-semibold">Summoner Name</label>
@@ -55,7 +54,7 @@
             name="username" 
             type="text" 
             class="form-control custom-input" 
-            placeholder="e.g., NA1"
+            placeholder="e.g., MonKey96DelUxe"
           >
         </div>
         <div class="col-md-5">
@@ -77,7 +76,7 @@
 
       <div id="games_div" class="mt-4">
         <h5 class="text-warning mb-3">
-          <i class="bi bi-trophy"></i> Games
+          <i class="bi bi-trophy"></i> Game
         </h5>
         <pre id="out2" class="output-box text-info">Enter a summoner name and tag, then click "Search" to view match history...</pre>
       </div>
