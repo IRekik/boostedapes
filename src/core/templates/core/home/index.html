@@ -26,15 +26,15 @@
       <h3 class="section-title">
         <i class="bi bi-code-slash"></i> The Longest Game of the Week...
       </h3>
-      <p class="text-light mb-3">Test the API connection with a simple fetch request</p>
+      <p class="text-light mb-3">What were they doing? Who knows.</p>
       <div class="d-flex align-items-center">
-        <button id="btn" class="btn btn-riot">
+        <button id="btn_fetch_longest_game_of_the_week" class="btn btn-riot">
           Fetch Data
         </button>
         <div class="loading-spinner" id="spinner1"></div>
       </div>
       <div class="mt-3">
-        <pre id="out" class="output-box text-success">Response will appear here...</pre>
+        <pre id="longest_game_of_the_week_box" class="output-box text-success">Response will appear here...</pre>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
       <h3 class="section-title">
         <i class="bi bi-person-circle"></i> Fetch Game by Player
       </h3>
-      <p class="text-light mb-4">Enter a summoner name and tag to retrieve their worst game. </br>Look at this feeder.</p>
+      <p class="text-light mb-4">Enter a summoner name and tag to retrieve their worst games. </br>Look at this feeder.</p>
       <div class="row g-3 mb-3">
         <div class="col-md-5">
           <label for="username" class="form-label text-warning fw-semibold">Summoner Name</label>
@@ -68,7 +68,7 @@
           >
         </div>
         <div class="col-md-2 d-flex align-items-end">
-          <button id="fetch_games_btn" class="btn btn-riot w-100">
+          <button id="fetch_user_games_btn" class="btn btn-riot w-100">
             Search
           </button>
         </div>
@@ -78,7 +78,26 @@
         <h5 class="text-warning mb-3">
           <i class="bi bi-trophy"></i> Game
         </h5>
-        <pre id="out2" class="output-box text-info">Enter a summoner name and tag, then click "Search" to view match history...</pre>
+        <pre id="user_games_box" class="output-box text-info">Enter a summoner name and tag, then click "Search" to view match history...</pre>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <My worst game of the week> -->
+  <div class="feature-card">
+    <div class="test-section">
+      <h3 class="section-title">
+        <i class="bi bi-code-slash"></i> My Worst Game of the Week 🙈
+      </h3>
+      <p class="text-light mb-3">A game that I am not proud of myself for.</p>
+      <div class="d-flex align-items-center">
+        <button id="btn_fetch_my_worst_game" class="btn btn-riot">
+          Fetch Data
+        </button>
+        <div class="loading-spinner" id="spinner2"></div>
+      </div>
+      <div class="mt-3">
+        <pre id="my_worst_game_box" class="output-box text-success">The game history will appear here...</pre>
       </div>
     </div>
   </div>

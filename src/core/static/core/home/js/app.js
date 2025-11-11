@@ -1,24 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Elements
-  const fetchBtn = document.getElementById('btn');
-  const output = document.getElementById('out');
-  const fetchGamesBtn = document.getElementById('fetch_games_btn');
+  const fetchLongestGameWeekBtn = document.getElementById('btn_fetch_longest_game_of_the_week');
+  const longestGameWeekBox = document.getElementById('longest_game_of_the_week_box');
+
+  const fetchUserGamesBtn = document.getElementById('fetch_user_games_btn');
   const usernameInput = document.getElementById('username');
   const tagInput = document.getElementById('tag');
-  const gamesOutput = document.getElementById('out2');
+  const userGamesBox = document.getElementById('user_games_box');
 
   // Manual Fetch Test
-  if (fetchBtn && output) {
-    fetchBtn.addEventListener('click', async function() {
+  if (fetchLongestGameWeekBtn && longestGameWeekBox) {
+    fetchLongestGameWeekBtn.addEventListener('click', async function() {
       // Update button state
-      const originalText = fetchBtn.textContent;
-      fetchBtn.disabled = true;
-      fetchBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
+      const originalText = fetchLongestGameWeekBtn.textContent;
+      fetchLongestGameWeekBtn.disabled = true;
+      fetchLongestGameWeekBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
       
       // Update output
-      output.textContent = 'Fetching data...';
-      output.classList.remove('text-success', 'text-danger');
-      output.classList.add('text-warning');
+      longestGameWeekBox.textContent = 'Fetching data...';
+      longestGameWeekBox.classList.remove('text-success', 'text-danger');
+      longestGameWeekBox.classList.add('text-warning');
 
       try {
         // Replace with your actual API endpoint
@@ -26,31 +27,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = await response.json();
 
         // Display success
-        output.textContent = JSON.stringify(data, null, 2);
-        output.classList.remove('text-warning', 'text-danger');
-        output.classList.add('text-success');
+        longestGameWeekBox.textContent = JSON.stringify(data, null, 2);
+        longestGameWeekBox.classList.remove('text-warning', 'text-danger');
+        longestGameWeekBox.classList.add('text-success');
         
         // Show success notification
         showNotification('Data fetched successfully!', 'success');
       } catch (error) {
         // Display error
-        output.textContent = `Error: ${error.message}`;
-        output.classList.remove('text-warning', 'text-success');
-        output.classList.add('text-danger');
+        longestGameWeekBox.textContent = `Error: ${error.message}`;
+        longestGameWeekBox.classList.remove('text-warning', 'text-success');
+        longestGameWeekBox.classList.add('text-danger');
         
         // Show error notification
         showNotification('Failed to fetch data', 'error');
       } finally {
         // Reset button
-        fetchBtn.disabled = false;
-        fetchBtn.textContent = originalText;
+        fetchLongestGameWeekBtn.disabled = false;
+        fetchLongestGameWeekBtn.textContent = originalText;
       }
     });
   }
 
   // Fetch Games by Player
-  if (fetchGamesBtn && usernameInput && tagInput && gamesOutput) {
-    fetchGamesBtn.addEventListener('click', async function() {
+  if (fetchUserGamesBtn && usernameInput && tagInput && userGamesBox) {
+    fetchUserGamesBtn.addEventListener('click', async function() {
       const username = usernameInput.value.trim();
       const tag = tagInput.value.trim();
 
@@ -68,14 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Update button state
-      const originalText = fetchGamesBtn.textContent;
-      fetchGamesBtn.disabled = true;
-      fetchGamesBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Searching...';
+      const originalText = fetchUserGamesBtn.textContent;
+      fetchUserGamesBtn.disabled = true;
+      fetchUserGamesBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Searching...';
       
       // Update output
-      gamesOutput.textContent = `Fetching match history for ${username}#${tag}...`;
-      gamesOutput.classList.remove('text-info', 'text-danger');
-      gamesOutput.classList.add('text-warning');
+      userGamesBox.textContent = `Fetching match history for ${username}#${tag}...`;
+      userGamesBox.classList.remove('text-info', 'text-danger');
+      userGamesBox.classList.add('text-warning');
 
       try {
         // Replace with your actual API endpoint
@@ -89,27 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Format and display games
         if (data.games && data.games.length > 0) {
-          gamesOutput.textContent = JSON.stringify(data, null, 2);
-          gamesOutput.classList.remove('text-warning', 'text-danger');
-          gamesOutput.classList.add('text-info');
+          userGamesBox.textContent = JSON.stringify(data, null, 2);
+          userGamesBox.classList.remove('text-warning', 'text-danger');
+          userGamesBox.classList.add('text-info');
           showNotification(`Found ${data.games.length} games!`, 'success');
         } else {
-          gamesOutput.textContent = 'No games found for this player.';
-          gamesOutput.classList.remove('text-warning', 'text-danger');
-          gamesOutput.classList.add('text-info');
+          userGamesBox.textContent = 'No games found for this player.';
+          userGamesBox.classList.remove('text-warning', 'text-danger');
+          userGamesBox.classList.add('text-info');
           showNotification('No games found', 'info');
         }
       } catch (error) {
         // Display error
-        gamesOutput.textContent = `Error: ${error.message}\n\nPlease check:\n- Summoner name and tag are correct\n- API endpoint is configured\n- Server is running`;
-        gamesOutput.classList.remove('text-warning', 'text-info');
-        gamesOutput.classList.add('text-danger');
+        userGamesBox.textContent = `Error: ${error.message}\n\nPlease check:\n- Summoner name and tag are correct\n- API endpoint is configured\n- Server is running`;
+        userGamesBox.classList.remove('text-warning', 'text-info');
+        userGamesBox.classList.add('text-danger');
         
         showNotification('Failed to fetch games', 'error');
       } finally {
         // Reset button
-        fetchGamesBtn.disabled = false;
-        fetchGamesBtn.textContent = originalText;
+        fetchUserGamesBtn.disabled = false;
+        fetchUserGamesBtn.textContent = originalText;
       }
     });
 
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [usernameInput, tagInput].forEach(input => {
       input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-          fetchGamesBtn.click();
+          fetchUserGamesBtn.click();
         }
       });
     });
