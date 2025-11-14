@@ -89,11 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = await response.json();
         
         // Format and display games
-        if (data.games && data.games.length > 0) {
+        if (data) {
+          console.log("REACH");
           userGamesBox.textContent = JSON.stringify(data, null, 2);
           userGamesBox.classList.remove('text-warning', 'text-danger');
           userGamesBox.classList.add('text-info');
-          showNotification(`Found ${data.games.length} games!`, 'success');
+          showNotification(`Found ${data.length} games!`, 'success');
         } else {
           userGamesBox.textContent = 'No games found for this player.';
           userGamesBox.classList.remove('text-warning', 'text-danger');

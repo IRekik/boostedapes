@@ -3,15 +3,17 @@ from django.conf import settings
 
 RIOT_API_KEY = settings.RIOT_API_KEY
 
-def get_account(username,tag):
+def get_account(username, tag):
     api_url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{username}/{tag}"
     headers = {"X-Riot-Token": RIOT_API_KEY}
     return requests.get(api_url, headers=headers).json()
 
+
 def get_last_10_matches_history(puuid):
     url = f"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=10"
     headers = {"X-Riot-Token": RIOT_API_KEY}
-    return requests.get(url, headers=headers)
+    return requests.get(url, headers=headers).json()  # <-- FIXED (.json())
+
 
 def get_match_info(match_id):
     url = f"https://asia.api.riotgames.com/lol/match/v5/matches/{match_id}"
