@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
       longestGameWeekBox.classList.add('text-warning');
 
       try {
-        // Replace with your actual API endpoint
         const response = await fetch('/api/get_champion_rotation/');
         const data = await response.json();
 
