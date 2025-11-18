@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Format and display games
         if (data) {
-          console.log("REACH");
           userGamesBox.textContent = JSON.stringify(data, null, 2);
           userGamesBox.classList.remove('text-warning', 'text-danger');
           userGamesBox.classList.add('text-info');
