@@ -7,12 +7,31 @@ import urllib.parse
 
 RIOT_API_KEY = settings.RIOT_API_KEY
 
+
 def home(request):
     return render(request, "core/home/index.html")
 
 
 def api_hello(request):
     return JsonResponse({"msg": "hello world"})
+
+
+def get_champion_rotation(request):
+    url = f"https://jp1.api.riotgames.com/lol/platform/v3/champion-rotations"
+    headers = {"X-Riot-Token": RIOT_API_KEY}
+
+    response = requests.get(url, headers=headers)
+    if not response.status_code != 200:
+        return JsonResponse({
+            "error": "request response is empty",
+
+        },
+            status=500)
+    data = response.json()
+
+    formatted_champion_list = format_champion_list(data)
+
+    return JsonResponse(formatted_champion_list, safe=False)
 
 
 def get_user_game_history(request):
@@ -38,15 +57,3 @@ def get_user_game_history(request):
         last_10_games_info.append(game_info)
 
     return JsonResponse(last_10_games_info, safe=False)
-
-
-def get_champion_rotation(request):
-    url = f"https://jp1.api.riotgames.com/lol/platform/v3/champion-rotations"
-    headers = {"X-Riot-Token": RIOT_API_KEY}
-
-    response = requests.get(url, headers=headers)
-    data = response.json()
-
-    formatted_champion_list = format_champion_list(data)
-
-    return JsonResponse(formatted_champion_list, safe=False)
