@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const tagInput = document.getElementById('tag');
   const userGamesBox = document.getElementById('user_games_box');
 
+  // My Worst Game of the Week
+  const fetchMyWorstGameBtn = document.getElementById('btn_fetch_my_worst_game');
+  const myWorstGameBox = document.getElementById('my_worst_game_box');
+
   // Manual Fetch Test
   if (fetchLongestGameWeekBtn && longestGameWeekBox) {
     fetchLongestGameWeekBtn.addEventListener('click', async function() {
@@ -120,6 +124,38 @@ document.addEventListener('DOMContentLoaded', function() {
           fetchUserGamesBtn.click();
         }
       });
+    });
+  }
+
+  // Fetch My Worst Game of the Week
+  if (fetchMyWorstGameBtn && myWorstGameBox) {
+    fetchMyWorstGameBtn.addEventListener('click', async function() {
+      const originalText = fetchMyWorstGameBtn.textContent;
+      fetchMyWorstGameBtn.disabled = true;
+      fetchMyWorstGameBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
+      myWorstGameBox.textContent = 'Fetching your worst game...';
+      myWorstGameBox.classList.remove('text-success', 'text-danger');
+      myWorstGameBox.classList.add('text-warning');
+
+      try {
+        const response = await fetch('/api/my_worst_game/');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        myWorstGameBox.textContent = JSON.stringify(data, null, 2);
+        myWorstGameBox.classList.remove('text-warning', 'text-danger');
+        myWorstGameBox.classList.add('text-success');
+        showNotification('Fetched your worst game!', 'success');
+      } catch (error) {
+        myWorstGameBox.textContent = `Error: ${error.message}`;
+        myWorstGameBox.classList.remove('text-warning', 'text-success');
+        myWorstGameBox.classList.add('text-danger');
+        showNotification('Failed to fetch your worst game', 'error');
+      } finally {
+        fetchMyWorstGameBtn.disabled = false;
+        fetchMyWorstGameBtn.textContent = originalText;
+      }
     });
   }
 });
